@@ -29,23 +29,37 @@ document.getElementById("clear").addEventListener('click', () => {
 // Operation button behaviour
 mathButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (afterCalc == true) {
-            clear();
+        if (operation == null) {
+            if (afterCalc == true) {
+                clear();
+            }
+            if (current.innerHTML !== " ") {
+                firstNumber = parseInt(current.innerHTML);
+            }
+            save.innerHTML = current.innerHTML + " " + button.innerHTML;
+            current.innerHTML = " ";
+            operation = button.innerHTML;
+        } else {
+            let secondNumber = parseInt(curr.innerHTML);
+            let res = operate(firstNumber, secondNumber, operation);
+            save.innerHTML = res;
+            firstNumber = res;
+            current.innerHTML = " ";
+            operation = button.innerHTML;
         }
-        if (current.innerHTML !== " ") {
-            firstNumber = parseInt(current.innerHTML);
-        }
-        save.innerHTML = current.innerHTML + " " + button.innerHTML;
-        current.innerHTML = " ";
-        operation = button.innerHTML;
+        
     })
 })
 
 // Equal button behaviour
 document.getElementById("equal").addEventListener('click', () => {
-    let secondNumber = parseInt(curr.innerHTML);
-    let res = operate(firstNumber, secondNumber, operation);
-    current.innerHTML = res;
+    if (curr.innerHTML === " ") {
+        current.innerHTML = firstNumber;
+    } else {
+        let secondNumber = parseInt(curr.innerHTML);
+        let res = operate(firstNumber, secondNumber, operation);
+        current.innerHTML = res;
+    }
     save.innerHTML = " ";
     afterCalc = true;
 })
