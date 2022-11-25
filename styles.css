@@ -1,44 +1,57 @@
-
-
 .calculator {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     border: 5px solid black;
+    box-sizing: border-box;
+    max-width: 600px;
+    height: auto;
+    margin: auto;
+    flex-shrink: 1;
 }
 
 .display {
+
     text-align: center;
     font-size: 48px;
     font-weight: bold;
     padding: 100px 0;
     border-bottom: 3px solid black;
+
 }
 
 .buttons {
     display: flex;
     justify-content: space-evenly;
-    padding: 100px 0;
+    flex-shrink: 1;
 }
 
 .numbers,
 .operators {
     display: flex;
     flex-wrap: wrap;
+    margin: 100px 0;
+
 }
 
 .digit,
 .operator {
     margin: 5px;
-    height: 30px;
+    height: 50px;
     background-color: grey;
     border-radius: 4px;
+
 }
 
 .digit {
-    flex: 1 0 25%;
+    flex: 1 1 25%;
 }
 
 .operator {
-    flex: 1 0 45%;
+    flex: 1 1 30%;
+}
+
+#equal,
+#clear {
+    flex: 1 1 90%;
 }
